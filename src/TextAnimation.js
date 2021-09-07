@@ -1,47 +1,21 @@
-import React, { useState,useEffect } from 'react'
+import TextLoop from "react-text-loop";
 import styled, { keyframes } from 'styled-components'
-import  { useInterval} from 'react-use'
+import React from 'react'
 
-function TextAnimation() {
-    const arr1 ="personal".split("");
-    const arr2 ="office".split("");
-    //const bussinesArray ="bussines".split("");
-     const [item , setItems]=useState(arr1);
-     const [count, setCount]=useState(0);
-     const [play, setPlay]=useState(false);
 
-     useInterval(
-         ()=>{
-             setItems(arr1)
-             setCount(count+1)
-             if(count===1){
-                 setCount(0)
-                setItems(arr2)
-             }
-            //  if (count===2) {
-            //     setItems(officeArray)
-            //     setCount(0)
-            //  }
-            },
-            play ? 6000:null
-     )
-     useEffect(() => {
-         const timer=setTimeout(() => {
-            //animate bussnice after timeout
-            setItems(arr2);
-            setPlay(true);
 
-         }, 4000);
-         return () => {
-             clearTimeout(timer)
-         }
-     }, [])
+function TextAnimation(props) {
+    let arr = []
     return (
-        <Wrapper>
-            {item.map((item,index)=>(
-                <span key={index}>{item}</span>
-            ))}
-        </Wrapper>
+        <TextLoop interval={6000}>
+            {props.Text.map((item, index) => (
+            <Wrapper key={index} >
+                {item.split("").map((item, index) => (
+                    <span key={index}>{item}</span>
+                ))}
+            </Wrapper>))}
+            </TextLoop>
+
     )
 }
 
@@ -50,7 +24,7 @@ const animation = keyframes`
 25% {opacity:1; transform: translateY(0px) skewY(0deg) xkewX(0deg) rotateZ(0deg); filter:blur(0px);}
 75% {opacity:1; transform: translateY(0px) skewY(0deg) xkewX(0deg) rotateZ(0deg); filter:blur(0px);}
 100% {opacity:0; transform: translateY(-100px) skewY(10deg) xkewX(10deg) rotateZ(30deg); filter:blur(10px);}`
-const Wrapper =styled.span`
+const Wrapper = styled.span`
 display:inline-block;
 span{
     opacity:0;
@@ -74,6 +48,18 @@ span:nth-child(4){
 }
 span:nth-child(5){
     animation-delay:0.5s;
+}
+span:nth-child(6){
+    animation-delay:0.6s;
+}
+span:nth-child(7){
+    animation-delay:0.7s;
+}
+span:nth-child(8){
+    animation-delay:0.8s;
+}
+span:nth-child(9){
+    animation-delay:0.9s;
 }
 `
 export default TextAnimation

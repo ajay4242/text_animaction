@@ -8,7 +8,7 @@ function App() {
       
         <Title>
         Design
-        <br/> and code <TextAnimation /> App
+        <br/> and code <TextAnimation   Text= {['Busnicess', 'Office' ,'Personal'] />     App
         </Title>
       
     </div>
